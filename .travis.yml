@@ -1,0 +1,29 @@
+language: python
+deploy:
+  provider: pypi
+  # Use an API token to authenticate
+  username: __token__
+  # The password is provided by the PYPI_PASSWORD environment variable.
+  # password: ...
+  edge: true
+  # Distribute only wheels.
+  distributions: "bdist_wheel"
+  skip_existing: true
+  setuptools_version: 40.6.2
+  twine_version: 3.1.1
+  wheel_version: 0.34.2
+  on:
+    tags: true
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+install:
+  - pip3 install --upgrade pip
+  - pip3 install -r requirements.txt
+  - pip3 install coverage
+# command to run tests
+script:
+  - python3 -m unittest discover -v -s ./tests
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
