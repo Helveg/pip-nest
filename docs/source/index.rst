@@ -35,7 +35,7 @@ In this example your NEST module should be called the ``my_modulemodule``.
 Initialize project
 ##################
 
-Run the ``pipnest init`` command and fill in the requested metadata::
+Run the ``pipnest init`` command from the root folder and fill in the requested metadata::
 
   cd my_module
   pipnest init .
