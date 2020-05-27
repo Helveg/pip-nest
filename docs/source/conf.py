@@ -18,7 +18,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(__file__, "..", "..")))
 
 # -- Project information -----------------------------------------------------
 
-project = "pip nest"
+project = "pipnest"
 copyright = "2020, Robin De Schepper"
 author = "Robin De Schepper"
 master_doc = "index"

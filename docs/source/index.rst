@@ -1,4 +1,4 @@
-Welcome to PaperPY's documentation!
+Welcome to pipnest's documentation!
 ===================================
 
 .. toctree::
