@@ -21,7 +21,7 @@ setuptools.setup(
     keywords="nest-simulator packaging module extension nest pip",
     author="Robin De Schepper",
     author_email="robingilbert.deschepper@unipv.it",
-    url="https://github.com/Helveg/pipnest",
+    url="https://github.com/Helveg/pip-nest",
     long_description=readme_text,
     long_description_content_type="text/markdown",
     packages=["pipnest"],
