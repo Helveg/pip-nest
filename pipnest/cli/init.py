@@ -60,3 +60,6 @@ class InitAction(Action):
             p.create()
         except FileExistsError as f:
             print(f)
+        print("Project ready to be packaged!")
+        print("Use `python setup.py sdist` to generate the package.")
+        print("Use `twine upload dist/* --skip-existing` to upload your package to PyPI.")
