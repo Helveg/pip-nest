@@ -8,7 +8,7 @@
 
 When installed through pip the module is built for you with CMake outside of the python
 package folder, this means that pip cannot track the real installation status. To
-uninstall and reinstall see [Uninstallation](Uninstallation).
+uninstall and reinstall see [Uninstallation](#uninstallation).
 
 0. Install NEST following the instructions provided here (https://www.nest-simulator.org/)
 
