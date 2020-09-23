@@ -21,6 +21,7 @@ class cmake_extension(Extension):
     def __init__(self, name):
         Extension.__init__(self, name, sources=[])
 
+
 class cmake_build(build_ext):
     def run(self):
         if not check_cmake():
@@ -28,8 +29,24 @@ class cmake_build(build_ext):
 
         import nest
 
+        nest_install_dir = os.path.sep.join(nest.__path__[0].split(os.path.sep)[:-4])
+        mod = os.getenv("NEST_MODULE_PATH", "")
+        sli = os.getenv("SLI_PATH", "")
+        mod_dir = os.path.join(nest_install_dir, "lib", "nest")
+        sli_dir = os.path.join(nest_install_dir, "share", "sli")
+        if mod_dir not in mod or sli_dir not in sli:
+            raise Exception(
+                "Please make sure the following env vars contain these directories:\n" +
+                f"* NEST_MODULE_PATH: '{mod_dir}'\n" +
+                f"* SLI_PATH: '{sli_dir}'\n" +
+                "You can do so by making sure the following 2 commands are executed on startup (eg. placed in ~/.bashrc):\n" +
+                f"export NEST_MODULE_PATH={mod_dir}:$NEST_MODULE_PATH\n" +
+                f"export SLI_PATH={sli_dir}:$SLI_PATH"
+            )
+
+
         # Installation dir of nest, required for the cmake command
-        nest_install_dir = os.path.sep.join(nest.__path__[0].split(os.path.sep)[:-4] + ["bin", "nest-config"])
+        nest_config = os.path.join(nest_install_dir, "bin", "nest-config")
         # Name of the extension, will be used to determine folder name
         ext_name = self.extensions[0].name
         # The path where CMake will be configured and Arbor will be built.
@@ -44,8 +61,7 @@ class cmake_build(build_ext):
 
         cmake_args = [
             '-DCMAKE_BUILD_TYPE=Release', # we compile with debug symbols in release mode.
-            "-Dwith-nest=" + nest_install_dir
-
+            "-Dwith-nest=" + nest_config
         ]
         build_args = ['--config', 'Release']
 
