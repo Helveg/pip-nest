@@ -6,7 +6,7 @@ pypandoc == 1.5
 
 # pipnest/pipnest/cli/plugins.py: 1
 # pipnest/setup.py: 3
-setuptools == 65.5.1
+setuptools == 70.0.0
 
 # pipnest/build/lib/pipnest/pipnest.py: 15
 # pipnest/pipnest/pipnest.py: 15
